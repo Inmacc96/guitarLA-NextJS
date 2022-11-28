@@ -21,6 +21,7 @@
   transition-duration: 300ms;
 }
 
-.nav a:hover {
+.nav a:hover,
+.active {
   background-color: var(--primary);
 }
