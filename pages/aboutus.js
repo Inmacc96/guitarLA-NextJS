@@ -2,7 +2,7 @@ import Layout from "../components/Layout";
 
 const Aboutus = () => {
   return (
-    <Layout>
+    <Layout title={"About Us"} description={"About us, guitarLA, music shop"}>
       <h2>Aboutus</h2>
     </Layout>
   );
