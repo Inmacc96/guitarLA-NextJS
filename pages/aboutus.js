@@ -1,9 +1,11 @@
 import Layout from "../components/Layout";
 
-export default function Home() {
+const Aboutus = () => {
   return (
     <Layout>
-      <h1>Hello word in NextJS!</h1>
+      <h2>Aboutus</h2>
     </Layout>
   );
-}
+};
+
+export default Aboutus;
