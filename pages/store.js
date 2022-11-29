@@ -9,7 +9,7 @@ const Store = ({ guitars }) => {
       description={"Online Shop, guitars for sale, instruments, GuitarLA"}
     >
       <main className="container">
-        <h1 className="heading">Our Colletion</h1>
+        <h1 className="heading">Our Collection</h1>
 
         <div className={styles.grid}>
           {guitars?.map((guitar) => (
