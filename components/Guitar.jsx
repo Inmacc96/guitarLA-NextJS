@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import styles from "../styles/guitars.module.css";
 
 const Guitar = ({ guitar }) => {
   const { name, description, image, price, url } = guitar;
   return (
-    <div>
+    <div className={styles.guitar}>
       <Image
         width={600}
         height={400}
@@ -12,11 +13,13 @@ const Guitar = ({ guitar }) => {
         alt={`${name} guitar`}
       />
 
-      <div>
+      <div className={styles.content}>
         <h3>{name}</h3>
-        <p>{description}</p>
-        <p>${price}</p>
-        <Link href={`/guitars/${url}`}>View product</Link>
+        <p className={styles.description}>{description}</p>
+        <p className={styles.price}>${price}</p>
+        <Link href={`/guitars/${url}`} className={styles.link}>
+          View product
+        </Link>
       </div>
     </div>
   );
