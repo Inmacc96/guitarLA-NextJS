@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Page404 = () => {
   return (
-    <Layout title="GuitarLA - Page Not Found">
+    <Layout title="Page Not Found">
       <p className="error">Page Not Found</p>
       <Link href="/" className="error-link">
         Back to home
