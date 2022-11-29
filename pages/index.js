@@ -1,9 +1,10 @@
 import Layout from "../components/Layout";
 import Guitar from "../components/Guitar";
 import Post from "../components/Post";
+import Course from "../components/Course";
 import styles from "../styles/grid.module.css";
 
-export default function Home({ guitars, posts }) {
+export default function Home({ guitars, posts, course }) {
   return (
     <Layout title={"Inicio"} description={"Music blog, guitar sales and more"}>
       <main className="container">
@@ -15,6 +16,8 @@ export default function Home({ guitars, posts }) {
           ))}
         </div>
       </main>
+
+      <Course course={course} />
 
       <section className="container">
         <h2 className="heading">Blog</h2>
@@ -32,20 +35,17 @@ export default function Home({ guitars, posts }) {
 export async function getStaticProps() {
   const urlGuitars = `${process.env.API_URL}/guitars?populate=image`;
   const urlPosts = `${process.env.API_URL}/posts?populate=image`;
+  const urlCourse = `${process.env.API_URL}/course?populate=image`;
 
-  const [resGuitars, resPosts] = await Promise.all([
+  const [resGuitars, resPosts, resCourse] = await Promise.all([
     fetch(urlGuitars),
     fetch(urlPosts),
+    fetch(urlCourse),
   ]);
-  const [{ data: guitars }, { data: posts }] = await Promise.all([
-    resGuitars.json(),
-    resPosts.json(),
-  ]);
-
-  console.log(guitars);
-  console.log(posts);
+  const [{ data: guitars }, { data: posts }, { data: course }] =
+    await Promise.all([resGuitars.json(), resPosts.json(), resCourse.json()]);
 
   return {
-    props: { guitars, posts },
+    props: { guitars, posts, course },
   };
 }
