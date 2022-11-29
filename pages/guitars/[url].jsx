@@ -1,9 +1,22 @@
+import { useState } from "react";
 import Image from "next/image";
 import Layout from "../../components/Layout";
 import styles from "../../styles/guitars.module.css";
 
 const Guitar = ({ guitar }) => {
+  const [quantity, setQuantity] = useState(0);
+
   const { name, description, image, price } = guitar[0].attributes;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Validation
+    if (quantity < 1) {
+      alert("Invalid quantity");
+      return;
+    }
+  };
   return (
     <Layout title={`${name} Guitar`}>
       <div className={styles.guitar}>
@@ -19,10 +32,13 @@ const Guitar = ({ guitar }) => {
           <p className={styles.description}>{description}</p>
           <p className={styles.price}>${price}</p>
 
-          <form className={styles.form}>
+          <form className={styles.form} onSubmit={handleSubmit}>
             <label htmlFor="quantity">Quantity</label>
 
-            <select id="quantity">
+            <select
+              id="quantity"
+              onChange={(e) => setQuantity(+e.target.value)}
+            >
               <option value="0">--- Select ---</option>
               <option value="1">1</option>
               <option value="2">2</option>
