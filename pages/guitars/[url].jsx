@@ -16,6 +16,17 @@ const Guitar = ({ guitar }) => {
       alert("Invalid quantity");
       return;
     }
+
+    // Build a guitar object to be stored in the cart state
+    const selectedGuitar = {
+      id: guitar[0].id,
+      image: image.data.attributes.url,
+      name,
+      price,
+      quantity,
+    };
+
+    // Send information to the context
   };
   return (
     <Layout title={`${name} Guitar`}>
