@@ -38,6 +38,12 @@ const Header = () => {
           >
             Blog
           </Link>
+          <Link
+            href="/cart"
+            className={router.pathname === "/cart" ? styles.active : ""}
+          >
+            <Image src="/img/cart.png" width={30} height={25} alt="cart icon" />
+          </Link>
         </nav>
       </div>
     </header>
