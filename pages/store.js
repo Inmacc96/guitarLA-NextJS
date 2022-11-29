@@ -1,3 +1,4 @@
+import GuitarsList from "../components/GuitarsList";
 import Layout from "../components/Layout";
 
 const Store = () => {
@@ -6,7 +7,11 @@ const Store = () => {
       title={"Online Shop"}
       description={"Online Shop, guitars for sale, instruments, GuitarLA"}
     >
-      <h2>Store</h2>
+      <main className="container">
+        <h1 className="heading">Our Colletion</h1>
+
+        <GuitarsList />
+      </main>
     </Layout>
   );
 };
