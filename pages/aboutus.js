@@ -6,7 +6,7 @@ const Aboutus = () => {
   return (
     <Layout title={"About Us"} description={"About us, guitarLA, music shop"}>
       <main className="container">
-        <h2 className="heading">About Us</h2>
+        <h1 className="heading">About Us</h1>
 
         <div className={styles.content}>
           <Image
