@@ -2,7 +2,6 @@ import GuitarsList from "../components/GuitarsList";
 import Layout from "../components/Layout";
 
 const Store = ({ guitars }) => {
-  console.log(guitars);
   return (
     <Layout
       title={"Online Shop"}
@@ -19,8 +18,7 @@ const Store = ({ guitars }) => {
 
 export default Store;
 
-// Esta información no se va a estar regenerando con cada visita a la página
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const response = await fetch(`${process.env.API_URL}/guitars?populate=image`);
   const { data: guitars } = await response.json();
 
