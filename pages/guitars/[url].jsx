@@ -3,7 +3,7 @@ import Image from "next/image";
 import Layout from "../../components/Layout";
 import styles from "../../styles/guitars.module.css";
 
-const Guitar = ({ guitar }) => {
+const Guitar = ({ guitar, addCart }) => {
   const [quantity, setQuantity] = useState(0);
 
   const { name, description, image, price } = guitar[0].attributes;
@@ -27,6 +27,7 @@ const Guitar = ({ guitar }) => {
     };
 
     // Send information to the context
+    addCart(selectedGuitar);
   };
   return (
     <Layout title={`${name} Guitar`}>
