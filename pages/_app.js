@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
   const addCart = (guitar) => {
     if (cart.some((guitarState) => guitarState.id === guitar.id)) {
       const updatedCart = cart.map((guitarState) => {
-        if (guitarState.id == guitar.id) {
+        if (guitarState.id === guitar.id) {
           guitarState.quantity = guitar.quantity;
         }
         return guitarState;
@@ -18,7 +18,25 @@ function MyApp({ Component, pageProps }) {
     }
   };
 
-  return <Component {...pageProps} cart={cart} addCart={addCart} />;
+  const updateQuantity = (guitar) => {
+    const updatedCart = cart.map((guitarState) => {
+      if (guitarState.id === guitar.id) {
+        guitarState.quantity = guitar.quantity;
+      }
+      return guitarState;
+    });
+
+    setCart(updatedCart);
+  };
+
+  return (
+    <Component
+      {...pageProps}
+      cart={cart}
+      addCart={addCart}
+      updateQuantity={updateQuantity}
+    />
+  );
 }
 
 export default MyApp;
