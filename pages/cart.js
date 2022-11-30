@@ -1,8 +1,19 @@
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Layout from "../components/Layout";
 import styles from "../styles/cart.module.css";
 
 const Cart = ({ cart, updateQuantity }) => {
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    const totalCalc = cart.reduce(
+      (total, product) => total + product.quantity * product.price,
+      0
+    );
+    setTotal(totalCalc);
+  }, [cart]);
+
   return (
     <Layout title="Shopping Cart">
       <main className="container">
@@ -15,7 +26,7 @@ const Cart = ({ cart, updateQuantity }) => {
             {cart.length === 0
               ? "Empty cart"
               : cart.map((product) => (
-                  <div key={product} className={styles.product}>
+                  <div key={product.id} className={styles.product}>
                     <div>
                       <Image
                         width={250}
@@ -61,7 +72,7 @@ const Cart = ({ cart, updateQuantity }) => {
 
           <aside className={styles.summary}>
             <h3>Order Summary</h3>
-            <p>Total to be paid:</p>
+            <p>Total to be paid: ${total}</p>
           </aside>
         </div>
       </main>
