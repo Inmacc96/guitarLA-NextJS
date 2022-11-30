@@ -3,7 +3,7 @@ import Image from "next/image";
 import Layout from "../components/Layout";
 import styles from "../styles/cart.module.css";
 
-const Cart = ({ cart, updateQuantity }) => {
+const Cart = ({ cart, updateQuantity, deleteProduct }) => {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
@@ -66,6 +66,13 @@ const Cart = ({ cart, updateQuantity }) => {
                         <span>{product.price * product.quantity}</span>
                       </p>
                     </div>
+                    <button
+                      className={styles.delete}
+                      type="button"
+                      onClick={() => deleteProduct(product.id)}
+                    >
+                      X
+                    </button>
                   </div>
                 ))}
           </div>

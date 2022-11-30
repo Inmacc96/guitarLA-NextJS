@@ -29,12 +29,19 @@ function MyApp({ Component, pageProps }) {
     setCart(updatedCart);
   };
 
+  const deleteProduct = (id) => {
+    const updatedCart = cart.filter((guitarState) => guitarState.id !== id);
+
+    setCart(updatedCart);
+  };
+
   return (
     <Component
       {...pageProps}
       cart={cart}
       addCart={addCart}
       updateQuantity={updateQuantity}
+      deleteProduct={deleteProduct}
     />
   );
 }
