@@ -1,8 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
-  const [cart, setCart] = useState([]);
+  const cartLS =
+    typeof window !== "undefined"
+      ? JSON.parse(localStorage.getItem("cart")) ?? []
+      : [];
+  const [cart, setCart] = useState(cartLS);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   const addCart = (guitar) => {
     if (cart.some((guitarState) => guitarState.id === guitar.id)) {
